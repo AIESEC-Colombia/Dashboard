@@ -4,17 +4,32 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UrOgvComponent } from './ur-ogv/ur-ogv.component';
+import { UrOgeComponent } from './ur-oge/ur-oge.component';
+import { UrOgtComponent } from './ur-ogt/ur-ogt.component';
+import { OgxCoperacionesComponent } from './ogx-coperaciones/ogx-coperaciones.component';
+import { OgxSgdComponent } from './ogx-sgd/ogx-sgd.component';
+import { IcxCoperacionesComponent } from './icx-coperaciones/icx-coperaciones.component';
+import { OdComponent } from './od/od.component';
+import { appRouterProviders, routing } from './app.routing';
+import { IcxSgdComponent } from './icx-sgd/icx-sgd.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    UrOgvComponent
+    UrOgvComponent,
+    UrOgeComponent,
+    UrOgtComponent,
+    OgxCoperacionesComponent,
+    OgxSgdComponent,
+    IcxCoperacionesComponent,
+    OdComponent,
+    IcxSgdComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, routing
   ],
-  providers: [],
+  providers: [appRouterProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

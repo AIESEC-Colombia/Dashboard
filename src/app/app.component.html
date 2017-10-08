@@ -42,22 +42,22 @@ font-size: 20px;
     <div class="row d-flex d-md-block flex-nowrap wrapper ">
         <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
             <div class="list-group border-0 card text-center text-md-left">
-                <a href="#" class="list-group-item">OD</a>
+                <a [routerLink]="['/od']" class="list-group-item">OD</a>
                 <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-dashboard"></i> <span class="d-none d-md-inline">UR</span> </a>
                 <div class="collapse" id="menu1">
-                    <a href="#" class="list-group-item" data-parent="#menu1">OGV</a>
-                    <a href="#" class="list-group-item" data-parent="#menu1">OGE</a>
-                    <a href="#" class="list-group-item" data-parent="#menu1">OGT</a>
+                    <a [routerLink]="['/ur_ogv']" class="list-group-item" data-parent="#menu1">OGV</a>
+                    <a [routerLink]="['/ur_oge']" class="list-group-item" data-parent="#menu1">OGE</a>
+                    <a [routerLink]="['/ur_ogt']" class="list-group-item" data-parent="#menu1">OGT</a>
                 </div>
                 <a href="#menuogx" class="list-group-item d-inline-block collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-dashboard"></i> <span class="d-none d-md-inline">OGX</span> </a>
                 <div class="collapse" id="menuogx">
-                    <a href="#" class="list-group-item" data-parent="#menuogx">Coperaciones</a>
-                    <a href="#" class="list-group-item" data-parent="#menuogx">SDGs</a>
+                    <a [routerLink]="['/ogx_coperaciones']" class="list-group-item" data-parent="#menuogx">Coperaciones</a>
+                    <a [routerLink]="['/ogx_sgd']" class="list-group-item" data-parent="#menuogx">SDGs</a>
                 </div>
                 <a href="#menuicx" class="list-group-item d-inline-block collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-dashboard"></i> <span class="d-none d-md-inline">IGX</span> </a>
                 <div class="collapse" id="menuicx">
-                    <a href="#" class="list-group-item" data-parent="#menuicx">Coperaciones</a>
-                    <a href="#" class="list-group-item" data-parent="#menuicx">SDGs</a>
+                    <a [routerLink]="['/']" class="list-group-item" data-parent="#menuicx">Coperaciones</a>
+                    <a [routerLink]="['/ixc_sgd']" class="list-group-item" data-parent="#menuicx">SDGs</a>
                 </div>
             </div>
         </div>
@@ -166,7 +166,7 @@ font-size: 20px;
               <div>Maxime quis quae ducimus consequatur, quas omnis magnam itaque nesciunt officia, alias. Voluptatibus neque perspiciatis sapiente at earum labore eum minima. Voluptatem corrupti facere soluta maiores laborum at quisquam explicabo!</div>
               <div>Ea a error, cumque, labore harum velit autem culpa aspernatur, quaerat aperiam odit molestiae ut quia. Recusandae asperiores natus consectetur deleniti amet dolore, quo tempore quidem eos fugiat perferendis minus!</div>
               <div>Neque, minus! Incidunt hic a, sed et, corporis dignissimos error fugit animi aliquid voluptates neque totam illo saepe consequuntur repellendus officia impedit, quos quo quod! Necessitatibus nobis at, sint alias.</div>
-
+                      <router-outlet></router-outlet>
             </div>
         </main>
 
