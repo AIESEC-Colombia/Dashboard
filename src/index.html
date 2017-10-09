@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>Dashboard</title>
   <base href="/">
+  <link rel="stylesheet" href="../assets/style.css">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -16,3 +17,17 @@
   <app-root></app-root>
 </body>
 </html>
+
+<script type="text/javascript">
+  $(function(){
+    $("#button-sidebar").on("click",function(){
+        if($("#sidebar").hasClass('sidebar-hidde')){
+            $("#sidebar").removeClass('sidebar-hidde');
+              $("#page").removeClass('page-witdh');
+        }else{
+          $("#sidebar").addClass('sidebar-hidde');
+            $("#page").addClass('page-witdh');
+        }
+    })
+  })
+</script>
