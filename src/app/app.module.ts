@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
+
 import { NavbarComponent } from './navbar/navbar.component';
 import { UrOgvComponent } from './ur-ogv/ur-ogv.component';
 import { UrOgeComponent } from './ur-oge/ur-oge.component';
@@ -12,6 +14,7 @@ import { IcxCoperacionesComponent } from './icx-coperaciones/icx-coperaciones.co
 import { OdComponent } from './od/od.component';
 import { appRouterProviders, routing } from './app.routing';
 import { IcxSgdComponent } from './icx-sgd/icx-sgd.component';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { IcxSgdComponent } from './icx-sgd/icx-sgd.component';
     IcxSgdComponent
   ],
   imports: [
-    BrowserModule, routing
+    BrowserModule,
+     routing,
+      HttpModule,
+      FormsModule
   ],
   providers: [appRouterProviders],
   bootstrap: [AppComponent]
