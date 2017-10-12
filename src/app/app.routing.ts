@@ -8,8 +8,8 @@ import { UrOgtComponent } from './ur-ogt/ur-ogt.component';
 
 import { IcxCoperacionesComponent } from './icx-coperaciones/icx-coperaciones.component';
 import { OgxCoperacionesComponent } from './ogx-coperaciones/ogx-coperaciones.component';
-import { OgxSgdComponent } from './ogx-sgd/ogx-sgd.component';
-import { IcxSgdComponent } from './icx-sgd/icx-sgd.component';
+import { OgxEstandaresComponent } from './ogx-estandares/ogx-estandares.component';
+
 
 // Importar componenetes
 
@@ -21,9 +21,9 @@ const appRouter:Routes = [
     ,{path: 'ur_ogv', component: UrOgvComponent}
     ,{path: 'ur_oge', component: UrOgeComponent}
 
+    ,{path: 'ogx_coperaciones', component: OgxCoperacionesComponent}
+    ,{path: 'ogx_standars', component: OgxEstandaresComponent}
     
-    ,{path: 'operaciones_coperaciones', component: OgxCoperacionesComponent}
-    ,{path: 'operaciones_sgd', component: OgxSgdComponent}
     
     /*,{path: 'ixc_sgd' , component:IcxSgdComponent}
     ,{path: '' , component:IcxCoperacionesComponent}*/

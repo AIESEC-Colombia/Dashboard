@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OgxSgdComponent } from './ogx-sgd.component';
+import { OgxEstandaresComponent } from './ogx-estandares.component';
 
-describe('OgxSgdComponent', () => {
-  let component: OgxSgdComponent;
-  let fixture: ComponentFixture<OgxSgdComponent>;
+describe('OgxEstandaresComponent', () => {
+  let component: OgxEstandaresComponent;
+  let fixture: ComponentFixture<OgxEstandaresComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OgxSgdComponent ]
+      declarations: [ OgxEstandaresComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OgxSgdComponent);
+    fixture = TestBed.createComponent(OgxEstandaresComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

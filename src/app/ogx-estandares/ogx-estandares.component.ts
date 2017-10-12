@@ -8,39 +8,30 @@ import {} from 'jquery.datatables';
 import { AdministracionService } from '../services/administracion.service';
 import { OperacionesService } from './../services/operaciones.service';
 
-
-
 @Component({
-  selector: 'app-ogx-coperaciones',
-  templateUrl: './ogx-coperaciones.component.html',
-  styleUrls: ['./ogx-coperaciones.component.css'],
+  selector: 'app-ogx-estandares',
+  templateUrl: './ogx-estandares.component.html',
+  styleUrls: ['./ogx-estandares.component.css'],
   providers: [AdministracionService, OperacionesService]
 })
-
-export class OgxCoperacionesComponent implements OnInit {
+export class OgxEstandaresComponent implements OnInit {
   lstComite:any[] = [];
   lstPrograma:any[] = [];
   token:String = ""; 
   fechaInicio:String;
   fechaFin:String;
   lstResultado:any[] = [];
-  
-  
   constructor(private _administracionService: AdministracionService,
-  private _operacionesService: OperacionesService) { 
-    
-  }
+    private _operacionesService: OperacionesService) { }
 
   ngOnInit() {
     this.consultarComite();
     this.consultarPrograma();
     this.inicializarTablas();
   }
-
   inicializarTablas(){
     $(document).ready(function(){
-      $("#tblPaises").DataTable({"paging":false, "searching": false});
-      $("#tblComites").DataTable({"paging":false, "searching": false});
+      $("#tblEstandares").DataTable({"paging":false, "searching": false});
     });
   }
 
@@ -73,8 +64,7 @@ export class OgxCoperacionesComponent implements OnInit {
     }
   }
   btnConsultarClick(){
-    $("#tblPaises").DataTable().clear().draw();
-    $("#tblComites").DataTable().clear().draw();
+    $("#tblEstandares").DataTable().clear().draw();
     this.lstResultado = [];
     if (this.token == ""){
       this._administracionService.getTokenAdministrador()
@@ -121,33 +111,30 @@ export class OgxCoperacionesComponent implements OnInit {
   }
   
   generarTablas(){
-      let lstPais = {};
-      let lstComite = {};
-      for (let oportunidad of this.lstResultado){
-        let office = oportunidad["opportunity"]["office"];
-        if(lstPais[office["country"]] != undefined){
-          lstPais[office["country"]] += 1;
+    let lstStandar = {};
+    for (let oportunidad of this.lstResultado){
+      let lstStandarExpa = oportunidad["standards"];
+      for (let standar of lstStandarExpa){
+        if (lstStandar[standar["position"]] == undefined){
+          lstStandar[standar["position"]] = {'nombre': standar["name"]
+                                            , 'si': 0
+                                            , 'no': 0
+                                            , 'no_responde': 0}
         }else{
-          lstPais[office["country"]] = 1;
-        }
-        if(lstComite[office["name"]] != undefined){
-          lstComite[office["name"]] += 1;
-        }else{
-          lstComite[office["name"]] = 1;
+          if(standar["option"] == null){
+            lstStandar[standar["position"]]["no_responde"] += 1;
+          }else if(standar["option"] == "true"){
+            lstStandar[standar["position"]]["si"] +=1;
+          }else{
+            lstStandar[standar["position"]]["no"] +=1;
+          }
         }
       }
-      
-      $.each(lstPais,(index, value )=>{
-        $("#tblPaises").DataTable().row.add([index, value]).draw();
-       
-      } );
+    }
+    $.each(lstStandar,(index, value )=>{
+      $("#tblEstandares").DataTable().row.add([index, value.nombre, value.si, value.no, value.no_responde]).draw();
 
-      $.each(lstComite, (index, value) => {
-        $("#tblComites").DataTable().row.add([index, value]).draw();
-      });
-      
-    
-      
-
+    });
   }
+
 }

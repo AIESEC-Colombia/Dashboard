@@ -19,9 +19,9 @@ export class AdministracionService {
                       .map(res => res.json());
   }
 
-  getPrograma(){
+  getProgramaOgx(){
     let url:String = this.constantes.getServicioMC();
-    return this._http.get(url + "lcperformance/product/")
+    return this._http.get(url + "lcperformance/product_ogx/")
                           .map(res => res.json());
 
   }

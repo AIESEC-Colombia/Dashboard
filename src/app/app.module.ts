@@ -9,11 +9,9 @@ import { UrOgvComponent } from './ur-ogv/ur-ogv.component';
 import { UrOgeComponent } from './ur-oge/ur-oge.component';
 import { UrOgtComponent } from './ur-ogt/ur-ogt.component';
 import { OgxCoperacionesComponent } from './ogx-coperaciones/ogx-coperaciones.component';
-import { OgxSgdComponent } from './ogx-sgd/ogx-sgd.component';
-import { IcxCoperacionesComponent } from './icx-coperaciones/icx-coperaciones.component';
 import { OdComponent } from './od/od.component';
 import { appRouterProviders, routing } from './app.routing';
-import { IcxSgdComponent } from './icx-sgd/icx-sgd.component';
+import { OgxEstandaresComponent } from './ogx-estandares/ogx-estandares.component';
 
 
 @NgModule({
@@ -24,10 +22,9 @@ import { IcxSgdComponent } from './icx-sgd/icx-sgd.component';
     UrOgeComponent,
     UrOgtComponent,
     OgxCoperacionesComponent,
-    OgxSgdComponent,
-    IcxCoperacionesComponent,
     OdComponent,
-    IcxSgdComponent
+    OgxEstandaresComponent,
+
   ],
   imports: [
     BrowserModule,
