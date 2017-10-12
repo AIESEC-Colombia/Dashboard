@@ -2,10 +2,10 @@
   <div class="">
     <div class="nav">
       <h1>DASHBOARD</h1>
-      <span class="fa fa-align-left" id="button-sidebar"></span>
+      <span class="fa fa-align-left" id="button-sidebar" (click)="sidebar_click()"></span>
     </div>
     <div class="main">
-      <div class="collapse width show sidebar" id="sidebar">
+      <div class="collapse width show sidebar" id="sidebar" >
         <div class="list-group border-0 card text-center text-md-left">
             <a [routerLink]="['/od']" class="list-group-item">OD</a>
             <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-dashboard"></i> <span class="d-none d-md-inline">UR</span> </a>
@@ -25,7 +25,7 @@
       <div class="page" id="page">
 
         <div class="carga-contenido">
-          <div class="container"> 
+          <div class="container">
             <router-outlet></router-outlet>
           </div>
         </div>
