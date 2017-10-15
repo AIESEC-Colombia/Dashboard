@@ -54,37 +54,51 @@ export class UrComponent implements OnInit {
     }
   }
   btnConsultarClick(){
-    let programa = this.getSelectPrograma();
-    console.log(programa);
-    let servicio = "open_ogv";
-    switch(programa.id){
-      case 4:
-        servicio = "open_ogv";
-      break;
-      case 5:
-        servicio = "open_oge";
-      break;
-      case 6:
-        servicio = "open_ogt";
-      break;
-    }
-    this.lstResultado = [];
-    
-    let codigoComite = $("#cmbComite").val();
-
-    this._administracionService.getInfoPodio(servicio
-    ,this.fechaInicio
-    ,this.fechaFin
-    ,<String>codigoComite).subscribe(
-      result => {
-
-      console.log(result)
+    if (this.validar()){
+      let programa = this.getSelectPrograma();
+      console.log(programa);
+      let servicio = "open_ogv";
+      switch(programa.id){
+        case 4:
+          servicio = "open_ogv";
+        break;
+        case 5:
+          servicio = "open_oge";
+        break;
+        case 6:
+          servicio = "open_ogt";
+        break;
+      }
+      this.lstResultado = [];
       
-    },
-    error => {
-      console.log(<any>error);
-    });
+      let codigoComite = $("#cmbComite").val();
+  
+      this._administracionService.getInfoPodio(servicio
+      ,this.fechaInicio
+      ,this.fechaFin
+      ,<String>codigoComite).subscribe(
+        result => {
+  
+        console.log(result)
+        
+      },
+      error => {
+        console.log(<any>error);
+      });
+  
+    }
+    
+  }
 
+  validar(){
+    if (this.fechaInicio == undefined || this.fechaInicio == null){
+      swal("Alerta", "Seleccione una fecha de inicio", "warning");
+      return false;
+    }else if(this.fechaFin == undefined || this.fechaFin == null) {
+      return false
+    }else{
+      return true;
+    }
   }
 
 }

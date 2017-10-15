@@ -81,33 +81,35 @@ export class OgxEstandaresComponent implements OnInit {
 
   }
   consultar(pagina:number){
-    let codigoComite = $("#cmbComite").val();
-    let programa = this.getSelectPrograma();
-    this._operacionesService.getConsultaRealize(this.token,
-       this.fechaInicio,
-        this.fechaFin,
-         <String>programa.code_expa
-        ,<String>codigoComite
-      ,pagina.toString())
-    .subscribe(
-      result => {
-        var data = result["data"];
-        var page = parseInt(result["paging"]["current_page"]);
-        for(let resultado of data){
-          this.lstResultado.push(resultado);
+    if(this.validar()){
+      let codigoComite = $("#cmbComite").val();
+      let programa = this.getSelectPrograma();
+      this._operacionesService.getConsultaRealize(this.token,
+         this.fechaInicio,
+          this.fechaFin,
+           <String>programa.code_expa
+          ,<String>codigoComite
+        ,pagina.toString())
+      .subscribe(
+        result => {
+          var data = result["data"];
+          var page = parseInt(result["paging"]["current_page"]);
+          for(let resultado of data){
+            this.lstResultado.push(resultado);
+          }
+         
+          if (data.length >= 100){
+            ++page;
+            this.consultar(page);
+          }else{
+            this.generarTablas();
+          }
+        },
+        error =>{
+          console.log(<any> error);
         }
-       
-        if (data.length >= 100){
-          ++page;
-          this.consultar(page);
-        }else{
-          this.generarTablas();
-        }
-      },
-      error =>{
-        console.log(<any> error);
-      }
-    );
+      );
+    }
   }
   
   generarTablas(){
@@ -135,6 +137,17 @@ export class OgxEstandaresComponent implements OnInit {
       $("#tblEstandares").DataTable().row.add([index, value.nombre, value.si, value.no, value.no_responde]).draw();
 
     });
+  }
+
+  validar(){
+    if (this.fechaInicio == undefined || this.fechaInicio == null){
+      swal("Alerta", "Seleccione una fecha de inicio", "warning");
+      return false;
+    }else if(this.fechaFin == undefined || this.fechaFin == null) {
+      return false
+    }else{
+      return true;
+    }
   }
 
 }
