@@ -26,11 +26,42 @@ export class AdministracionService {
 
   }
 
+  getPrograma(){
+    let url:String = this.constantes.getServicioMC();
+    return this._http.get(url + "lcperformance/product/")
+                          .map(res => res.json());
+
+  }
+
   getComite(){
     let url:String = this.constantes.getServicioMC();
     return this._http.get(url + "lcperformance/comite/")
                           .map(res => res.json());
+  }
 
+  getWeekly(){
+    let url:String = this.constantes.getServicioMC();
+    return this._http.get(url + "lcperformance/weekly/")
+                          .map(res => res.json());
+  }
+
+  getInfoPodio(reporte:String, fechaInicio:String, fechaFin:String, comite:String){
+    let url:String = this.constantes.getServicioMC();
+    url += "reporte_ogx/"+reporte+"/?";
+    url += "fechaInicio="+fechaInicio;
+    url += "&fechaFin="+fechaFin;
+    url += "&comite="+comite;
+    return this._http.get(url+"")
+                          .map(res => res.json());
+
+  }
+  getLcPerformance(date_initial:String, date_final:String, programs:String ){
+    let url:String = this.constantes.getServicioMC()+"/lc_performance/?";
+    url += "date_initial="+date_initial;
+    url += "&date_final="+date_final;
+    url += "&programs="+programs;
+    return this._http.get(url+"")
+    .map(res => res.json());
   }
 
 }

@@ -8,12 +8,7 @@
       <div class="collapse width show sidebar" id="sidebar" >
         <div class="list-group border-0 card text-center text-md-left">
             <a [routerLink]="['/od']" class="list-group-item">OD</a>
-            <a href="#menu1" class="list-group-item d-inline-block collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-dashboard"></i> <span class="d-none d-md-inline">UR</span> </a>
-            <div class="collapse" id="menu1">
-                <a [routerLink]="['/ur_ogv']" class="list-group-item" data-parent="#menu1">OGV</a>
-                <a [routerLink]="['/ur_oge']" class="list-group-item" data-parent="#menu1">OGE</a>
-                <a [routerLink]="['/ur_ogt']" class="list-group-item" data-parent="#menu1">OGT</a>
-            </div>
+            <a [routerLink]="['/ur']" class="list-group-item">UR</a>
             <a href="#menuogx" class="list-group-item d-inline-block collapsed" data-toggle="collapse" data-parent="#sidebar" aria-expanded="false"><i class="fa fa-dashboard"></i> <span class="d-none d-md-inline">OGX</span> </a>
             <div class="collapse" id="menuogx">
                 <a [routerLink]="['/ogx_coperaciones']" class="list-group-item" data-parent="#menuogx">Coperaciones</a>

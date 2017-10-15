@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 
 import {} from 'jquery';
@@ -45,6 +46,7 @@ export class OgxCoperacionesComponent implements OnInit {
   }
 
   consultarComite(){
+   
     this._administracionService.getComite()
     .subscribe(resul => {
       this.lstComite = resul;
