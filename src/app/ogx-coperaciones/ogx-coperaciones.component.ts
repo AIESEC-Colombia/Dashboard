@@ -21,15 +21,15 @@ import { OperacionesService } from './../services/operaciones.service';
 export class OgxCoperacionesComponent implements OnInit {
   lstComite:any[] = [];
   lstPrograma:any[] = [];
-  token:String = ""; 
+  token:String = "";
   fechaInicio:String;
   fechaFin:String;
   lstResultado:any[] = [];
-  
-  
+
+
   constructor(private _administracionService: AdministracionService,
-  private _operacionesService: OperacionesService) { 
-    
+  private _operacionesService: OperacionesService) {
+
   }
 
   ngOnInit() {
@@ -46,7 +46,7 @@ export class OgxCoperacionesComponent implements OnInit {
   }
 
   consultarComite(){
-   
+
     this._administracionService.getComite()
     .subscribe(resul => {
       this.lstComite = resul;
@@ -75,6 +75,7 @@ export class OgxCoperacionesComponent implements OnInit {
     }
   }
   btnConsultarClick(){
+
     $("#tblPaises").DataTable().clear().draw();
     $("#tblComites").DataTable().clear().draw();
     this.lstResultado = [];
@@ -94,6 +95,7 @@ export class OgxCoperacionesComponent implements OnInit {
   }
   consultar(pagina:number){
     if (this.validar()){
+      $(".preload").css({"display":"flex"}).show("slow");
       let codigoComite = $("#cmbComite").val();
       let programa = this.getSelectPrograma();
       console.log(codigoComite);
@@ -110,11 +112,12 @@ export class OgxCoperacionesComponent implements OnInit {
           for(let resultado of data){
             this.lstResultado.push(resultado);
           }
-         
+
           if (data.length >= 100){
             ++page;
             this.consultar(page);
           }else{
+            $(".preload").hide("slow");
             this.generarTablas();
           }
         },
@@ -124,7 +127,7 @@ export class OgxCoperacionesComponent implements OnInit {
       );
     }
   }
-  
+
   generarTablas(){
       let lstPais = {};
       let lstComite = {};
@@ -141,16 +144,16 @@ export class OgxCoperacionesComponent implements OnInit {
           lstComite[office["name"]] = 1;
         }
       }
-      
+
       $.each(lstPais,(index, value )=>{
         $("#tblPaises").DataTable().row.add([index, value]).draw();
-       
+
       } );
 
       $.each(lstComite, (index, value) => {
         $("#tblComites").DataTable().row.add([index, value]).draw();
       });
-    
+
   }
 
   validar(){
