@@ -85,18 +85,20 @@ export class OdComponent implements OnInit {
     }
   }
   btnConsultarClick(){
-    let programa = this.getSelectPrograma();
-    let fechaFinal = this.getSelectFechaFinal();
-    let fechaInicial = this.getSelectFechaInicial();
-    this._administracionService.getLcPerformance(this.getSelectFechaInicial().init_date
-      , this.getSelectFechaFinal().final_date
-      , programa.id).subscribe(result => {
-        this.lstResultado = result;
-        this.crearTable();
-      }, 
-    error => {
-      console.log(<any> error);
-    });
+    if(this.validar()){
+      let programa = this.getSelectPrograma();
+      let fechaFinal = this.getSelectFechaFinal();
+      let fechaInicial = this.getSelectFechaInicial();
+      this._administracionService.getLcPerformance(this.getSelectFechaInicial().init_date
+        , this.getSelectFechaFinal().final_date
+        , programa.id).subscribe(result => {
+          this.lstResultado = result;
+          this.crearTable();
+        }, 
+      error => {
+        console.log(<any> error);
+      });
+    }
   }
 
   crearTable(){
@@ -187,4 +189,20 @@ export class OdComponent implements OnInit {
      
     });
   }
+
+  validar(){
+    
+     if($("#cmbPrograma").val() == "Seleccione un Programa"){
+       swal("Alerta", "Seleccione una un programa", "warning");
+       return false;
+     }else if ($("#cmbFechaInicial").val() == "Semana Inicial"){
+       swal("Alerta", "Seleccione una fecha de inicio", "warning");
+       return false;
+     }else if($("#cmbFechaFinal").val() == "Semana Final") {
+      swal("Alerta", "Seleccione una fecha de final", "warning");
+       return false
+     }else{
+       return true;
+     }
+   }
 }

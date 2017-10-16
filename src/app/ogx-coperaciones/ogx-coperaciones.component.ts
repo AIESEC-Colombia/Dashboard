@@ -96,6 +96,7 @@ export class OgxCoperacionesComponent implements OnInit {
     if (this.validar()){
       let codigoComite = $("#cmbComite").val();
       let programa = this.getSelectPrograma();
+      console.log(codigoComite);
       this._operacionesService.getConsultaRealize(this.token,
          this.fechaInicio,
           this.fechaFin,
@@ -153,10 +154,18 @@ export class OgxCoperacionesComponent implements OnInit {
   }
 
   validar(){
-    if (this.fechaInicio == undefined || this.fechaInicio == null){
+   
+    if($("#cmbComite").val() == "Seleccione un Comite"){
+      swal("Alerta", "Seleccione una un comite", "warning");
+      return false;
+    }else if($("#cmbPrograma").val() == "Seleccione un Programa"){
+      swal("Alerta", "Seleccione una un programa", "warning");
+      return false;
+    }else if (this.fechaInicio == undefined || this.fechaInicio == null){
       swal("Alerta", "Seleccione una fecha de inicio", "warning");
       return false;
     }else if(this.fechaFin == undefined || this.fechaFin == null) {
+      swal("Alerta", "Seleccione una fecha de final", "warning");
       return false
     }else{
       return true;
