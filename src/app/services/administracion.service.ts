@@ -56,7 +56,7 @@ export class AdministracionService {
 
   }
   getLcPerformance(date_initial:String, date_final:String, programs:String ){
-    let url:String = this.constantes.getServicioMC()+"/lc_performance/?";
+    let url:String = this.constantes.getServicioMC()+"lcperformance/lc_performance/?";
     url += "date_initial="+date_initial;
     url += "&date_final="+date_final;
     url += "&programs="+programs;

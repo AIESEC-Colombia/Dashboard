@@ -84,9 +84,9 @@ export class OdComponent implements OnInit {
     let programa = this.getSelectPrograma();
     let fechaFinal = this.getSelectFechaFinal();
     let fechaInicial = this.getSelectFechaInicial();
-    this._administracionService.getLcPerformance(fechaInicial
-      , fechaFinal
-      , programa).subscribe(result => {
+    this._administracionService.getLcPerformance(this.getSelectFechaInicial().init_date
+      , this.getSelectFechaFinal().final_date
+      , programa.id).subscribe(result => {
         console.log(result);
       }, 
     error => {
