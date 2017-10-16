@@ -30,9 +30,13 @@ export class OdComponent implements OnInit {
   ngOnInit() {
     this.consultarSemana();
     this.consultarPrograma();
-    
+    this.crearLista();
   }
   
+  crearLista(){
+    $("#tblComites").DataTable({"scrollX": true});
+  }
+
   consultarPrograma(){
     this._administracionService.getPrograma()
     .subscribe(resul => {
@@ -87,12 +91,100 @@ export class OdComponent implements OnInit {
     this._administracionService.getLcPerformance(this.getSelectFechaInicial().init_date
       , this.getSelectFechaFinal().final_date
       , programa.id).subscribe(result => {
-        console.log(result);
+        this.lstResultado = result;
+        this.crearTable();
       }, 
     error => {
       console.log(<any> error);
     });
-    
-    
+  }
+
+  crearTable(){
+    $.each(this.lstResultado,function(index, value){
+      
+      var planApplications = value["Applications"]["plan"];
+      var cumplidoApplications = value["Applications"]["cumplido"];
+      var cumplimientoPorApplications = ((cumplidoApplications * 100)/planApplications).toFixed(2);
+      var gabApplications = planApplications - cumplidoApplications;
+      var crecimientoAbsApplications = cumplidoApplications - value["Applications"]["cumplidoAnioanterior"] ;
+      var crecimientoRelApplications = ((crecimientoAbsApplications * 100)/ value["Applications"]["cumplidoAnioanterior"]).toFixed(2);
+
+      var planAccepted = value["Accepted"]["plan"];
+      var cumplidoAccepted = value["Accepted"]["cumplido"];
+      var cumplimientoPorAccepted = ((cumplidoAccepted * 100)/planAccepted).toFixed(2);;
+      var gabAccepted = planAccepted - cumplidoAccepted;
+      var crecimientoAbsAccepted = cumplidoAccepted - value["Accepted"]["cumplidoAnioanterior"] ;
+      var crecimientoRelAccepted = ((crecimientoAbsAccepted * 100)/ value["Accepted"]["cumplidoAnioanterior"]).toFixed(2);
+
+      var planApprovals = value["Approvals"]["plan"];
+      var cumplidoApprovals = value["Approvals"]["cumplido"];
+      var cumplimientoPorApprovals = ((cumplidoApprovals * 100)/planApprovals).toFixed(2);;
+      var gabApprovals = planApprovals - cumplidoApprovals;
+      var crecimientoAbsApprovals = cumplidoApprovals - value["Approvals"]["cumplidoAnioanterior"] ;
+      var crecimientoRelApprovals = ((crecimientoAbsApprovals * 100)/ value["Approvals"]["cumplidoAnioanterior"]).toFixed(2);
+
+      var planRealized = value["Realized"]["plan"];
+      var cumplidoRealized = value["Realized"]["cumplido"];
+      var cumplimientoPorRealized = ((cumplidoRealized * 100)/planRealized).toFixed(2);;
+      var gabRealized = planRealized - cumplidoRealized;
+      var crecimientoAbsRealized = cumplidoRealized - value["Realized"]["cumplidoAnioanterior"] ;
+      var crecimientoRelRealized = ((crecimientoAbsRealized * 100)/ value["Realized"]["cumplidoAnioanterior"]).toFixed(2);
+      
+      var planCompleted = value["Completed"]["plan"];
+      var cumplidoCompleted = value["Completed"]["cumplido"];
+      var cumplimientoPorCompleted = ((cumplidoCompleted * 100)/planCompleted).toFixed(2);;
+      var gabCompleted = planCompleted - cumplidoCompleted;
+      var crecimientoAbsCompleted = cumplidoCompleted - value["Completed"]["cumplidoAnioanterior"] ;
+      var crecimientoRelCompleted = ((crecimientoAbsCompleted * 100)/ value["Completed"]["cumplidoAnioanterior"]).toFixed(2);;
+      console.log(value["Completed"]["cumplidoAnioanterior"]);
+
+      var planFinished = value["Finished"]["plan"];
+      var cumplidoFinished = value["Finished"]["cumplido"];
+      var cumplimientoPorFinished = ((cumplidoFinished * 100)/planFinished).toFixed(2);
+      var gabFinished = planFinished - cumplidoFinished;
+      var crecimientoAbsFinished = cumplidoFinished - value["Finished"]["cumplidoAnioanterior"] ;
+      var crecimientoRelFinished = ((crecimientoAbsFinished * 100)/ value["Finished"]["cumplidoAnioanterior"]).toFixed(2);;
+      
+      var lc = index;
+      $("#tblComites").DataTable().row.add([
+        lc
+        ,planApplications
+        ,cumplidoApplications
+        ,cumplimientoPorApplications
+        ,gabApplications
+        ,crecimientoAbsApplications
+        ,crecimientoRelApplications
+  
+        ,planAccepted
+        ,cumplidoAccepted
+        ,cumplimientoPorAccepted
+        ,gabAccepted
+        ,crecimientoAbsAccepted
+        ,crecimientoRelAccepted
+  
+        ,planApprovals
+        ,cumplidoApprovals
+        ,cumplimientoPorApprovals
+        ,gabApprovals
+        ,crecimientoAbsApprovals
+        ,crecimientoRelApprovals
+  
+        ,planRealized
+        ,cumplidoRealized
+        ,cumplimientoPorRealized
+        ,gabRealized
+        ,crecimientoAbsRealized
+        ,crecimientoRelRealized
+        
+        ,planCompleted
+        ,cumplidoCompleted
+        ,cumplimientoPorCompleted
+        ,gabCompleted
+        ,crecimientoAbsCompleted
+        ,crecimientoRelCompleted
+  
+      ]).draw();
+     
+    });
   }
 }
