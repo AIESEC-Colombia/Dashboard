@@ -1,9 +1,8 @@
 <div class="row">
     <div class="col-6">
         <div class="form-group row">
-            <label for="example-password-input" placeholder="First name" class="col-2 col-form-label"></label>
             <div class="col-10">
-                <select id="cmbComite" name="states[]" style="width:100%;">
+                <select class="list" id="cmbComite" name="states[]" style="width:100%;">
 					<option >Seleccione un Comite</option>
 					<option *ngFor="let comite of lstComite" value="{{comite.code_expa}}">{{comite.name}}</option>
 				</select>
@@ -13,7 +12,6 @@
 
     <div class="col-6">
         <div class="form-group row">
-            <label for="example-password-input" class="col-2 col-form-label"></label>
             <div class="col-10">
                 <select id="cmbPrograma" name="states[]" style="width:100%;">
 					<option >Seleccione un Programa</option>
@@ -25,8 +23,8 @@
 
     <div class='col-sm-6'>
         <div class="form-group row">
-            <label for="example-date-input" class="col-2 col-form-label">Fecha inicio:</label>
             <div class="col-10">
+                <label>Fecha inicio</label>
                 <input class="form-control" [(ngModel)]="fechaInicio" type="date" value="" id="idFechaInicio">
             </div>
         </div>
@@ -34,8 +32,8 @@
 
     <div class='col-sm-6'>
         <div class="form-group row">
-            <label for="example-date-input" class="col-2 col-form-label">Fecha Fin:</label>
             <div class="col-10">
+                <label>Fecha Fin</label>
                 <input class="form-control" [(ngModel)]="fechaFin" type="date" value="" id="idFechaFin">
             </div>
         </div>
