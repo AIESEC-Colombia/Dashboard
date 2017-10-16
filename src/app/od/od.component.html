@@ -1,36 +1,39 @@
-<div class="row">
-	<div class="col-6">
-		<div class="form-group row">
-			<label for="example-password-input" class="col-2 col-form-label">Programa:</label>
-			<div class="col-10">
-				<select id="cmbPrograma" name="states[]" style="width:100%;">
-					<option *ngFor="let programa of lstPrograma" value="{{programa.id}}">{{programa.name}}</option>
-				</select>
-			</div>	
+<div class="carga-contenido">
+	<div class="row">
+		<div class="col-12 col-md-6">
+			<div class="form-group row">
+				<div class="col-12">
+					<select id="cmbPrograma" name="states[]" style="width:100%;">
+						<option >Seleccione un Programa</option>
+						<option *ngFor="let programa of lstPrograma" value="{{programa.id}}">{{programa.name}}</option>
+					</select>
+				</div>
+			</div>
 		</div>
-	</div>
 
-	<div class='col-sm-6'>
-		<div class="form-group row">
-			<label for="example-password-input" class="col-2 col-form-label">Semana Inicial:</label>
-			<div class="col-10">
-				<select id="cmbFechaInicial" name="states[]" style="width:100%;">
-					<option *ngFor="let weeklyInicial of lstWeeklyInicial" value="{{weeklyInicial.init_date}}">{{weeklyInicial.name}}</option>
-				</select>
+		<div class='col-12 col-md-6'>
+			<div class="form-group row">
+				<div class="col-12">
+					<select id="cmbFechaInicial" name="states[]" style="width:100%;">
+						<option >Semana Inicial</option>
+						<option *ngFor="let weeklyInicial of lstWeeklyInicial" value="{{weeklyInicial.init_date}}">{{weeklyInicial.name}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class='col-12 col-md-6'>
+			<div class="form-group row">
+				<div class="col-12">
+					<select id="cmbFechaFinal" name="states[]" style="width:100%;">
+						<option >Semana Final</option>
+						<option *ngFor="let weeklyInicial of lstWeeklyInicial" value="{{weeklyInicial.final_date}}">{{weeklyInicial.name}}</option>
+					</select>
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class='col-sm-6'>
-		<div class="form-group row">
-			<label for="example-password-input" class="col-2 col-form-label">Semana Final:</label>
-			<div class="col-10">
-				<select id="cmbFechaFinal" name="states[]" style="width:100%;">
-					<option *ngFor="let weeklyInicial of lstWeeklyInicial" value="{{weeklyInicial.final_date}}">{{weeklyInicial.name}}</option>
-				</select>
-			</div>
-		</div>
-	</div>
 </div>
 <div class="container"> 
 	<div class="row">
@@ -91,6 +94,6 @@
 						
 				</tbody>
 			</table>
-		</div>
+
 	</div>
 </div>

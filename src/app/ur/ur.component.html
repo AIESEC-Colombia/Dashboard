@@ -1,75 +1,77 @@
-<div class="row">
-	<div class="col-6">
-		<div class="form-group row">
-			<label for="example-password-input" class="col-2 col-form-label">Comite:</label>
-			<div class="col-10">
-				<select id="cmbComite" name="states[]" style="width:100%;">
-					<option *ngFor="let comite of lstComite" value="{{comite.code_podio}}">{{comite.name}}</option>
-				</select>
+<div class="carga-contenido">
+	<div class="row">
+		<div class="col-12 col-md-6">
+			<div class="form-group row">
+				<div id="lista" class="col-12">
+						<select class="list" id="cmbComite" name="states[]" style="width:100%;">
+			<option >Seleccione un Comite</option>
+			<option *ngFor="let comite of lstComite" value="{{comite.code_expa}}">{{comite.name}}</option>
+		</select>
+				</div>
+			</div>
+	    </div>
+
+		<div class="col-6">
+			<div class="form-group row">
+				<label for="example-password-input" class="col-2 col-form-label">Programa:</label>
+				<div class="col-10">
+					<select id="cmbPrograma" name="states[]" style="width:100%;">
+						<option *ngFor="let programa of lstPrograma" value="{{programa.id}}">{{programa.name}}</option>
+					</select>
+				</div>
 			</div>
 		</div>
-    </div>
 
-	<div class="col-6">
-		<div class="form-group row">
-			<label for="example-password-input" class="col-2 col-form-label">Programa:</label>
-			<div class="col-10">
-				<select id="cmbPrograma" name="states[]" style="width:100%;">
-					<option *ngFor="let programa of lstPrograma" value="{{programa.id}}">{{programa.name}}</option>
-				</select>
+		<div class='col-sm-6'>
+			<div class="form-group row">
+				<label for="example-date-input" class="col-2 col-form-label">Fecha inicio:</label>
+				<div class="col-10">
+					<input class="form-control" [(ngModel)]="fechaInicio" type="date" value="" id="idFechaInicio">
+				</div>
+			</div>
+		</div>
+
+		<div class='col-sm-6'>
+			<div class="form-group row">
+				<label for="example-date-input" class="col-2 col-form-label">Fecha Fin:</label>
+				<div class="col-10">
+					<input class="form-control" [(ngModel)]="fechaFin" type="date" value="" id="idFechaFin">
+				</div>
 			</div>
 		</div>
 	</div>
-
-	<div class='col-sm-6'>
-		<div class="form-group row">
-			<label for="example-date-input" class="col-2 col-form-label">Fecha inicio:</label>
-			<div class="col-10">
-				<input class="form-control" [(ngModel)]="fechaInicio" type="date" value="" id="idFechaInicio">
+		<div class="row">
+			<div class="col-sm-12">
+				<button type="button" (click)="btnConsultarClick()" class="btn btn-primary btn-lg">Consultar</button>
 			</div>
-		</div>
-	</div>
-
-	<div class='col-sm-6'>
-		<div class="form-group row">
-			<label for="example-date-input" class="col-2 col-form-label">Fecha Fin:</label>
-			<div class="col-10">
-				<input class="form-control" [(ngModel)]="fechaFin" type="date" value="" id="idFechaFin">
-			</div>
-		</div>
 	</div>
 </div>
-<div class="container"> 
-	<div class="row">
-		<div class="col-sm-12">
-			<button type="button" (click)="btnConsultarClick()" class="btn btn-primary btn-lg">Consultar</button>
-		</div>
-		<hr>
-		<div class="col-6">
-			<table class="" id="tblPaises">
-				<thead>
-					<tr>
-						<th>Pais</th>
-						<th>Realizaciones</th>
-					</tr>
-				</thead>
-				<tbody>
-				</tbody>
-			</table>
-		</div>
+<div class="carga-contenido">
+		<div class="row">
+			<div class="col-12 col-md-6">
+				<table class="table table-hover table-bordered" id="tblPaises">
+					<thead>
+						<tr>
+							<th>Pais</th>
+							<th>Realizaciones</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
 
-		<div class="col-6">
-			<table class="" id="tblComites">
-				<thead>
-					<tr>
-						<th>Comites</th>
-						<th>Realizaciones</th>
-					</tr>
-				</thead>
-				<tbody>
-						
-				</tbody>
-			</table>
+			<div class="col-12 col-md-6">
+				<table class="table table-hover table-bordered" id="tblComites">
+					<thead>
+						<tr>
+							<th>Comites</th>
+							<th>Realizaciones</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
 		</div>
-	</div>
 </div>
