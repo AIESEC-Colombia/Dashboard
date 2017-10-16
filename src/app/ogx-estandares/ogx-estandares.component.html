@@ -1,50 +1,55 @@
-<div class="row">
-    <div class="col-6">
-        <div class="form-group row">
-            <div id="lista" class="col-10">
-                <select class="list" id="cmbComite" name="states[]" style="width:100%;">
-					<option >Seleccione un Comite</option>
-					<option *ngFor="let comite of lstComite" value="{{comite.code_expa}}">{{comite.name}}</option>
-				</select>
-            </div>
-        </div>
-    </div>
+<div class="carga-contenido">
+  <div class="row">
+      <div class="col-12 col-md-6">
+          <div class="form-group row">
+              <div id="lista" class="col-12">
+                  <select class="list" id="cmbComite" name="states[]" style="width:100%;">
+  					<option >Seleccione un Comite</option>
+  					<option *ngFor="let comite of lstComite" value="{{comite.code_expa}}">{{comite.name}}</option>
+  				</select>
+              </div>
+          </div>
+      </div>
 
-    <div class="col-6">
-        <div class="form-group row">
-            <div class="col-10">
-                <select id="cmbPrograma" name="states[]" style="width:100%;">
-					<option >Seleccione un Programa</option>
-					<option *ngFor="let programa of lstPrograma" value="{{programa.id}}">{{programa.name}}</option>
-				</select>
-            </div>
-        </div>
-    </div>
+      <div class="col-12 col-md-6">
+          <div class="form-group row">
+              <div class="col-12">
+                  <select id="cmbPrograma" name="states[]" style="width:100%;">
+  					<option >Seleccione un Programa</option>
+  					<option *ngFor="let programa of lstPrograma" value="{{programa.id}}">{{programa.name}}</option>
+  				</select>
+              </div>
+          </div>
+      </div>
 
-    <div class='col-sm-6'>
-        <div class="form-group row">
-            <div class="col-10">
-                <label>Fecha inicio</label>
-                <input class="form-control" [(ngModel)]="fechaInicio" type="date" value="" id="idFechaInicio">
-            </div>
-        </div>
-    </div>
+      <div class='col-12 col-md-6'>
+          <div class="form-group row">
+              <div class="col-12">
+                  <label for="example-date-input" class="col-12 col-form-label">Fecha inicio</label>
+                  <input class="form-control" [(ngModel)]="fechaInicio" type="date" value="" id="idFechaInicio">
+              </div>
+          </div>
+      </div>
 
-    <div class='col-sm-6'>
-        <div class="form-group row">
-            <div class="col-10">
-                <label>Fecha Fin</label>
-                <input class="form-control" [(ngModel)]="fechaFin" type="date" value="" id="idFechaFin">
-            </div>
-        </div>
-    </div>
+      <div class='col-12 col-md-6'>
+          <div class="form-group row">
+              <div class="col-12">
+                  <label for="example-date-input" class="col-12 col-form-label">Fecha Fin</label>
+                  <input class="form-control" [(ngModel)]="fechaFin" type="date" value="" id="idFechaFin">
+              </div>
+          </div>
+      </div>
 
-    <div class="col-sm-12">
-        <button type="button" (click)="btnConsultarClick()" class="btn btn-primary btn-lg">Consultar</button>
-    </div>
+      <div class="col-12 col-sm-3 col-md-3">
+          <button type="button" (click)="btnConsultarClick()" class="btn btn-primary btn-xs btn-block">Consultar</button>
+      </div>
+  </div>
+</div>
 
+<div class="carga-contenido">
+  <div class="row">
     <div class="col-12">
-        <table class="" id="tblEstandares">
+        <table class="table table-hover table-bordered" id="tblEstandares">
             <thead>
                 <tr>
                     <th>Numero</th>
@@ -58,6 +63,5 @@
             </tbody>
         </table>
     </div>
-
-
+  </div>
 </div>

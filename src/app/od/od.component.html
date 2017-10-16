@@ -1,68 +1,73 @@
+<div class="carga-contenido">
+	<div class="row">
+		<div class="col-12 col-md-6">
+			<div class="form-group row">
+				<div class="col-12">
+					<select id="cmbPrograma" name="states[]" style="width:100%;">
+						<option >Seleccione un Programa</option>
+						<option *ngFor="let programa of lstPrograma" value="{{programa.id}}">{{programa.name}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class='col-12 col-md-6'>
+			<div class="form-group row">
+				<div class="col-12">
+					<select id="cmbFechaInicial" name="states[]" style="width:100%;">
+						<option >Semana Inicial</option>
+						<option *ngFor="let weeklyInicial of lstWeeklyInicial" value="{{weeklyInicial.init_date}}">{{weeklyInicial.name}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class='col-12 col-md-6'>
+			<div class="form-group row">
+				<div class="col-12">
+					<select id="cmbFechaFinal" name="states[]" style="width:100%;">
+						<option >Semana Final</option>
+						<option *ngFor="let weeklyInicial of lstWeeklyInicial" value="{{weeklyInicial.final_date}}">{{weeklyInicial.name}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		<div class="row">
+			<div class="col-12 col-sm-3">
+				<button type="button" (click)="btnConsultarClick()" class="btn btn-primary btn-xs btn-block">Consultar</button>
+			</div>
+		</div>
+
+</div>
+<div class="carga-contenido">
 <div class="row">
-	<div class="col-6">
-		<div class="form-group row">
-			<label for="example-password-input" class="col-2 col-form-label">Programa:</label>
-			<div class="col-10">
-				<select id="cmbPrograma" name="states[]" style="width:100%;">
-					<option *ngFor="let programa of lstPrograma" value="{{programa.id}}">{{programa.name}}</option>
-				</select>
-			</div>	
-		</div>
+	<div class="col-12 col-md-6">
+		<table class="table table-bordered table-hover" id="tblPaises">
+			<thead>
+				<tr>
+					<th>Pais</th>
+					<th>Realizaciones</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
 	</div>
 
-	<div class='col-sm-6'>
-		<div class="form-group row">
-			<label for="example-password-input" class="col-2 col-form-label">Semana Inicial:</label>
-			<div class="col-10">
-				<select id="cmbFechaInicial" name="states[]" style="width:100%;">
-					<option *ngFor="let weeklyInicial of lstWeeklyInicial" value="{{weeklyInicial.init_date}}">{{weeklyInicial.name}}</option>
-				</select>
-			</div>
-		</div>
-	</div>
+	<div class="col-12 col-md-6">
+		<table class="table table-bordered table-hover" id="tblComites">
+			<thead>
+				<tr>
+					<th>Comites</th>
+					<th>Realizaciones</th>
+				</tr>
+			</thead>
+			<tbody>
 
-	<div class='col-sm-6'>
-		<div class="form-group row">
-			<label for="example-password-input" class="col-2 col-form-label">Semana Final:</label>
-			<div class="col-10">
-				<select id="cmbFechaFinal" name="states[]" style="width:100%;">
-					<option *ngFor="let weeklyInicial of lstWeeklyInicial" value="{{weeklyInicial.final_date}}">{{weeklyInicial.name}}</option>
-				</select>
-			</div>
-		</div>
+			</tbody>
+		</table>
 	</div>
 </div>
-<div class="container"> 
-	<div class="row">
-		<div class="col-sm-12">
-			<button type="button" (click)="btnConsultarClick()" class="btn btn-primary btn-lg">Consultar</button>
-		</div>
-		<hr>
-		<div class="col-6">
-			<table class="" id="tblPaises">
-				<thead>
-					<tr>
-						<th>Pais</th>
-						<th>Realizaciones</th>
-					</tr>
-				</thead>
-				<tbody>
-				</tbody>
-			</table>
-		</div>
-
-		<div class="col-6">
-			<table class="" id="tblComites">
-				<thead>
-					<tr>
-						<th>Comites</th>
-						<th>Realizaciones</th>
-					</tr>
-				</thead>
-				<tbody>
-						
-				</tbody>
-			</table>
-		</div>
-	</div>
 </div>
