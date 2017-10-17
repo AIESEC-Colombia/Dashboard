@@ -184,6 +184,7 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   color:rgb(122, 122, 122);
+  font-size: .8em;
 }
 
 
@@ -199,4 +200,11 @@
         box-sizing: border-box;
         padding-top: 50px;
     }
+}
+
+@media screen and (max-width:500px) {
+  .footer > p{
+    font-size: .6em;
+    text-align: center;
+  }
 }
