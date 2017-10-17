@@ -82,6 +82,7 @@ export class OgxEstandaresComponent implements OnInit {
   }
   consultar(pagina:number){
     if(this.validar()){
+      $(".preload").css({"display":"flex"}).show("slow");
       let codigoComite = $("#cmbComite").val();
       let programa = this.getSelectPrograma();
       this._operacionesService.getConsultaRealize(this.token,
@@ -102,6 +103,7 @@ export class OgxEstandaresComponent implements OnInit {
             ++page;
             this.consultar(page);
           }else{
+            $(".preload").hide("slow");
             this.generarTablas();
           }
         },

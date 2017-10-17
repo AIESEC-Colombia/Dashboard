@@ -55,7 +55,7 @@ export class OdComponent implements OnInit {
       this.lstWeeklyInicial = result;
       $("#cmbFechaInicial").select2();
       $("#cmbFechaFinal").select2();
-      console.log(result);
+      
     },
     erro => {
       console.log(<any>erro);
@@ -86,6 +86,7 @@ export class OdComponent implements OnInit {
   }
   btnConsultarClick(){
     if(this.validar()){
+      $(".preload").css({"display":"flex"}).show("slow");
       let programa = this.getSelectPrograma();
       let fechaFinal = this.getSelectFechaFinal();
       let fechaInicial = this.getSelectFechaInicial();
@@ -102,6 +103,7 @@ export class OdComponent implements OnInit {
   }
 
   crearTable(){
+    $("#tblComites").DataTable().clear().draw();
     $.each(this.lstResultado,function(index, value){
       
       var planApplications = value["Applications"]["plan"];
@@ -138,8 +140,7 @@ export class OdComponent implements OnInit {
       var gabCompleted = planCompleted - cumplidoCompleted;
       var crecimientoAbsCompleted = cumplidoCompleted - value["Completed"]["cumplidoAnioanterior"] ;
       var crecimientoRelCompleted = ((crecimientoAbsCompleted * 100)/ value["Completed"]["cumplidoAnioanterior"]).toFixed(2);;
-      console.log(value["Completed"]["cumplidoAnioanterior"]);
-
+      
       var planFinished = value["Finished"]["plan"];
       var cumplidoFinished = value["Finished"]["cumplido"];
       var cumplimientoPorFinished = ((cumplidoFinished * 100)/planFinished).toFixed(2);
@@ -188,6 +189,7 @@ export class OdComponent implements OnInit {
       ]).draw();
      
     });
+    $(".preload").hide("slow");
   }
 
   validar(){

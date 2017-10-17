@@ -5,7 +5,7 @@
 				<div id="lista" class="col-12">
 						<select class="list" id="cmbComite" name="states[]" style="width:100%;">
 			<option >Seleccione un Comite</option>
-			<option *ngFor="let comite of lstComite" value="{{comite.code_expa}}">{{comite.name}}</option>
+			<option *ngFor="let comite of lstComite" value="{{comite.code_podio}}">{{comite.name}}</option>
 		</select>
 				</div>
 			</div>
@@ -49,11 +49,11 @@
 <div class="carga-contenido">
 		<div class="row">
 			<div class="col-12 col-md-6">
-				<table class="table table-hover table-bordered" id="tblPaises">
+				<table class="table table-hover table-bordered" id="tblComoConocioAiesec">
 					<thead>
 						<tr>
-							<th>Pais</th>
-							<th>Realizaciones</th>
+							<th>Como conocio aiesec</th>
+							<th>personas</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -62,11 +62,24 @@
 			</div>
 
 			<div class="col-12 col-md-6">
-				<table class="table table-hover table-bordered" id="tblComites">
+				<table class="table table-hover table-bordered" id="tblOpenMes">
 					<thead>
 						<tr>
-							<th>Comites</th>
-							<th>Realizaciones</th>
+							<th>Open por mes</th>
+							<th>Numero opens</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="col-12 col-md-12">
+				<table class="table table-hover table-bordered" id="tblOpenUniversidad">
+					<thead>
+						<tr>
+							<th>Universidad</th>
+							<th>Open Universidad</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -74,4 +87,7 @@
 				</table>
 			</div>
 		</div>
+</div>
+<div class="preload">
+    <img src="../assets/gif.svg" alt="">
 </div>

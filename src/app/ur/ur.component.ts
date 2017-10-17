@@ -23,6 +23,13 @@ export class UrComponent implements OnInit {
   ngOnInit() {
     this.consultarComite();
     this.consultarPrograma();
+    this.inicializarTablas();
+  }
+
+  inicializarTablas(){
+    $("#tblComoConocioAiesec").DataTable({"paging":false, "searching": false});
+    $("#tblOpenMes").DataTable({"paging":false, "searching": false});
+    $("#tblOpenUniversidad").DataTable({"paging":false, "searching": false});
   }
 
   consultarComite(){
@@ -55,8 +62,9 @@ export class UrComponent implements OnInit {
   }
   btnConsultarClick(){
     if (this.validar()){
+      $(".preload").css({"display":"flex"}).show("slow");
       let programa = this.getSelectPrograma();
-      console.log(programa);
+     
       let servicio = "open_ogv";
       switch(programa.id){
         case 4:
@@ -78,9 +86,11 @@ export class UrComponent implements OnInit {
       ,this.fechaFin
       ,<String>codigoComite).subscribe(
         result => {
-  
-        console.log(result)
-        
+        this.lstResultado = result;
+        $("#tblComoConocioAiesec").DataTable().clear().draw();
+        $("#tblOpenMes").DataTable().clear().draw();
+        $("#tblOpenUniversidad").DataTable().clear().draw();
+        this.generarTabla();
       },
       error => {
         console.log(<any>error);
@@ -88,6 +98,32 @@ export class UrComponent implements OnInit {
   
     }
     
+  }
+
+  generarTabla(){
+    console.log(this.lstResultado);
+    let lstResultadoHowMeet:any[] = this.lstResultado["lstResultadoHowMeet"];
+    let lstResultadoOpenMes:any[] = this.lstResultado["lstResultadoOpenMes"];
+    let lstResultadoOpenUniversidad:any[] = this.lstResultado["lstResultadoOpenUniversidad"];
+
+    $.each(lstResultadoHowMeet, function(index, value){
+      $("#tblComoConocioAiesec").DataTable().row.add([
+        index,value
+      ]).draw();
+    });
+
+    $.each(lstResultadoOpenMes, function(index2, value2){
+       $("#tblOpenMes").DataTable().row.add([
+        index2,value2
+      ]).draw();
+    });
+
+    $.each(lstResultadoOpenUniversidad, function(index3, value3){
+      $("#tblOpenUniversidad").DataTable().row.add([
+        index3,value3
+      ]).draw();
+    });
+    $(".preload").hide("slow");
   }
 
   validar(){
