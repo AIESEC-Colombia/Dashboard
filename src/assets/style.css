@@ -167,6 +167,25 @@
    margin: auto;
  }
 
+.footer{
+  background: #fff;
+  width: 100%;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  text-align: right;
+  box-shadow: 0 -2px 20px #d0c9c9;
+}
+
+.footer > p{
+  margin-bottom: 0;
+  margin-right: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color:rgb(122, 122, 122);
+}
+
 
 @media screen and (max-width:768px) {
     .page {
