@@ -105,7 +105,8 @@ export class OdComponent implements OnInit {
   crearTable(){
     $("#tblComites").DataTable().clear().draw();
     $.each(this.lstResultado,function(index, value){
-      
+      console.log(index);
+      console.log(value);
       var planApplications = value["Applications"]["plan"];
       var cumplidoApplications = value["Applications"]["cumplido"];
       var cumplimientoPorApplications = ((cumplidoApplications * 100)/planApplications).toFixed(2);
@@ -114,7 +115,7 @@ export class OdComponent implements OnInit {
       var crecimientoRelApplications = ((crecimientoAbsApplications * 100)/ value["Applications"]["cumplidoAnioanterior"]).toFixed(2);
 
       var planAccepted = value["Accepted"]["plan"];
-      var cumplidoAccepted = value["Accepted"]["cumplido"];
+      var cumplidoAccepted = value["Matched"]["cumplido"];
       var cumplimientoPorAccepted = ((cumplidoAccepted * 100)/planAccepted).toFixed(2);;
       var gabAccepted = planAccepted - cumplidoAccepted;
       var crecimientoAbsAccepted = cumplidoAccepted - value["Accepted"]["cumplidoAnioanterior"] ;
