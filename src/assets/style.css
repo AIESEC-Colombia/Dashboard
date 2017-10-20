@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+td{
+    text-align: center;
+}
+
 .nav {
     position: fixed;
     height: 50px;
@@ -208,3 +212,4 @@
     text-align: center;
   }
 }
+

@@ -10,6 +10,7 @@ import { OdComponent } from './od/od.component';
 import { appRouterProviders, routing } from './app.routing';
 import { OgxEstandaresComponent } from './ogx-estandares/ogx-estandares.component';
 import { UrComponent } from './ur/ur.component';
+import { ChartModule } from 'angular-highcharts';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { UrComponent } from './ur/ur.component';
     BrowserModule,
      routing,
       HttpModule,
-      FormsModule
+      FormsModule,
+      ChartModule
   ],
   providers: [appRouterProviders],
   bootstrap: [AppComponent]

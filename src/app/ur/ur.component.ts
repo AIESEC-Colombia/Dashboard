@@ -4,6 +4,7 @@ import {} from  'select2'
 import {} from 'bootstrap';
 import {} from 'bootstrap-datepicker';
 import {} from 'jquery.datatables';
+import { Chart } from 'angular-highcharts';
 import { AdministracionService } from '../services/administracion.service';
 @Component({
   selector: 'app-ur',
@@ -18,6 +19,9 @@ export class UrComponent implements OnInit {
   fechaInicio:String;
   fechaFin:String;
   lstResultado:any[] = [];
+  chartComoConocioaiesec:Chart;
+  
+  
   constructor(private _administracionService: AdministracionService) { }
 
   ngOnInit() {
@@ -101,15 +105,45 @@ export class UrComponent implements OnInit {
   }
 
   generarTabla(){
-    console.log(this.lstResultado);
+
     let lstResultadoHowMeet:any[] = this.lstResultado["lstResultadoHowMeet"];
     let lstResultadoOpenMes:any[] = this.lstResultado["lstResultadoOpenMes"];
     let lstResultadoOpenUniversidad:any[] = this.lstResultado["lstResultadoOpenUniversidad"];
+    
+    var seriesConocioAiesec:any[] = []
 
     $.each(lstResultadoHowMeet, function(index, value){
       $("#tblComoConocioAiesec").DataTable().row.add([
         index,value
       ]).draw();
+      seriesConocioAiesec.push({
+        name: index,
+        y: value,
+        drilldown: index
+      });
+    });
+
+    this.chartComoConocioaiesec = new Chart({
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: 'Como Aiesec'
+      },
+      credits: {
+        enabled: false
+      },
+      legend: {
+        enabled: false
+      },
+      tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+      },
+      series: [{
+        name: 'Brands',
+        data: seriesConocioAiesec
+      }]
     });
 
     $.each(lstResultadoOpenMes, function(index2, value2){
