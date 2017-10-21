@@ -20,7 +20,8 @@ export class UrComponent implements OnInit {
   fechaFin:String;
   lstResultado:any[] = [];
   chartComoConocioaiesec:Chart;
-  
+  chartOpenMes:Chart;
+  chartOpenUniversidad:Chart;
   
   constructor(private _administracionService: AdministracionService) { }
 
@@ -111,6 +112,26 @@ export class UrComponent implements OnInit {
     let lstResultadoOpenUniversidad:any[] = this.lstResultado["lstResultadoOpenUniversidad"];
     
     var seriesConocioAiesec:any[] = []
+    var conocioAiesecMax = 0
+
+    var seriesOpenPorMes:any[] = []
+    var openPorMesMax = 0;
+
+    var seriesOpenPorUniversidad:any[] = []
+    var openPorUniversidadMax = 0
+
+
+    $.each(lstResultadoHowMeet, function(index, value){
+      conocioAiesecMax += value;
+    });
+
+    $.each(lstResultadoOpenMes, function(index2, value2){
+      openPorMesMax+=value2;  
+    });
+
+    $.each(lstResultadoOpenUniversidad, function(index3, value3){
+      openPorUniversidadMax += value3;
+    });
 
     $.each(lstResultadoHowMeet, function(index, value){
       $("#tblComoConocioAiesec").DataTable().row.add([
@@ -118,45 +139,48 @@ export class UrComponent implements OnInit {
       ]).draw();
       seriesConocioAiesec.push({
         name: index,
-        y: value,
+        y: (value * 100) / conocioAiesecMax,
         drilldown: index
       });
     });
 
-    this.chartComoConocioaiesec = new Chart({
-      chart: {
-        type: 'column'
-      },
-      title: {
-        text: 'Como Aiesec'
-      },
-      credits: {
-        enabled: false
-      },
-      legend: {
-        enabled: false
-      },
-      tooltip: {
-        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
-      },
-      series: [{
-        name: 'Brands',
-        data: seriesConocioAiesec
-      }]
-    });
+    this.generarGraficaComoConocioAiesec(
+      seriesConocioAiesec,
+      "Como conocio aiesec", 
+      "Total open");
 
     $.each(lstResultadoOpenMes, function(index2, value2){
        $("#tblOpenMes").DataTable().row.add([
         index2,value2
       ]).draw();
+      seriesOpenPorMes.push({
+        name: index2,
+        y: (value2 * 100) / openPorMesMax,
+        drilldown: index2
+      });
     });
+
+    this.generarGraficaOpenMes(
+      seriesOpenPorMes,
+      "Open por mes", 
+      "Total open");
 
     $.each(lstResultadoOpenUniversidad, function(index3, value3){
       $("#tblOpenUniversidad").DataTable().row.add([
         index3,value3
       ]).draw();
+      seriesOpenPorUniversidad.push({
+        name: index3,
+        y: (value3 * 100) / openPorUniversidadMax,
+        drilldown: index3
+      });
     });
+
+    this.generarGraficaUniversidad(
+      seriesOpenPorUniversidad,
+      "Open por universidad", 
+      "Total open");
+
     $(".preload").hide("slow");
   }
 
@@ -178,5 +202,136 @@ export class UrComponent implements OnInit {
      }
    }
 
+  generarGraficaComoConocioAiesec(seriesConocioAiesec:any[], titulo:string, texto:string){
+    
+    this.chartComoConocioaiesec = new Chart({
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: titulo
+      },
+      xAxis: {
+          type: 'category'
+      },
+      yAxis: {
+          title: {
+              text: texto
+          }
+  
+      },
+      plotOptions: {
+          series: {
+              
+              dataLabels: {
+                  enabled: true,
+                  format: '{point.y:.1f}'
+              }
+          }
+      },
+      credits: {
+        enabled: false
+      },
+      legend: {
+        enabled: false
+      },
+      tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b><br/>'
+      },
+      series: [{
+        name: '%',
+        data: seriesConocioAiesec
+      }]
+    });
+  }
+
+  generarGraficaOpenMes(seriesConocioAiesec:any[], titulo:string, texto:string){
+    
+    this.chartOpenMes = new Chart({
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: titulo
+      },
+      xAxis: {
+          type: 'category'
+      },
+      yAxis: {
+          title: {
+              text: texto
+          }
+  
+      },
+      plotOptions: {
+          series: {
+              
+              dataLabels: {
+                  enabled: true,
+                  format: '{point.y:.1f}'
+              }
+          }
+      },
+      credits: {
+        enabled: false
+      },
+      legend: {
+        enabled: false
+      },
+      tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b><br/>'
+      },
+      series: [{
+        name: '%',
+        data: seriesConocioAiesec
+      }]
+    });
+  }
+
+  generarGraficaUniversidad(seriesConocioAiesec:any[], titulo:string, texto:string){
+    
+    this.chartOpenUniversidad = new Chart({
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: titulo
+      },
+      xAxis: {
+          type: 'category'
+      },
+      yAxis: {
+          title: {
+              text: texto
+          }
+  
+      },
+      plotOptions: {
+          series: {
+              
+              dataLabels: {
+                  enabled: true,
+                  format: '{point.y:.1f}'
+              }
+          }
+      },
+      credits: {
+        enabled: false
+      },
+      legend: {
+        enabled: false
+      },
+      tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b><br/>'
+      },
+      series: [{
+        name: '%',
+        data: seriesConocioAiesec
+      }]
+    });
+  }
 
 }
