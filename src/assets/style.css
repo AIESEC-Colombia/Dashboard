@@ -4,8 +4,13 @@
     box-sizing: border-box;
 }
 
+table {
+    border-collapse: collapse !important;
+}
+
 td{
     text-align: center;
+    border: 1px solid gainsboro; 
 }
 
 .nav {
